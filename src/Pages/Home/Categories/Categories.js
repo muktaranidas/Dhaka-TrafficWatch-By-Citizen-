@@ -1,10 +1,8 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 import Category from "./Category";
 
 const Categories = () => {
-  // const [categories, setCategories] = useState([]);
-
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>

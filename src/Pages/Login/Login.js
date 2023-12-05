@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 import useToken from "../../hooks/useToken";
-
 const Login = () => {
   const {
     register,
@@ -28,13 +27,11 @@ const Login = () => {
   // }
 
   const handleLogin = (data) => {
-    console.log(data);
     setLoginError("");
     signIn(data?.email, data?.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        toast("User  Successfully Created");
+        toast("User Login Successfully!");
         setLoginUserEmail(data?.email);
       })
       .catch((err) => {
@@ -42,6 +39,7 @@ const Login = () => {
         setLoginError(err.message);
       });
   };
+
   const handleGoogleLogin = () => {
     return loginWithGoogle()
       .then((result) => {
@@ -53,13 +51,13 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[700px] flex justify-center items-center ">
-      <div className="w-96 p-7">
-        <h2 className="text-2xl text-center text-pink-600 my-4 font-bold">
+    <div className="flex justify-center items-center">
+      <div className="w-96 my-10 border rounded bg-slate-50 px-10 pb-5">
+        <h2 className="text-2xl text-center text-pink-600 my-4 font-bold border-b pb-2">
           Please Login
         </h2>
 
-        <form onSubmit={handleSubmit(handleLogin)} className="border px-10">
+        <form onSubmit={handleSubmit(handleLogin)}>
           {/* email */}
           <div className="form-control my-2 w-full max-w-xs">
             <label className="label">
@@ -108,9 +106,9 @@ const Login = () => {
           </div>
         </form>
         <p>
-          New to WhichBook?{" "}
-          <Link to="/signup" className="text-secondary">
-            please SignUp First
+          You don't have account.
+          <Link to="/signup" className="text-secondary ml-2">
+            SignUp
           </Link>
         </p>
         <div className="divider">OR</div>
