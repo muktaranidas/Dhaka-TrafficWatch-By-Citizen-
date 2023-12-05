@@ -92,7 +92,7 @@ const Footer = () => {
             </ul>
           </div>
           <div className="space-y-3">
-            <div className="uppercase dark:text-gray-50">Social media</div>
+            <div className="uppercase dark:text-gray-900">Social media</div>
             <div className="flex justify-start space-x-3">
               <Link
                 rel="noopener noreferrer"
