@@ -5,7 +5,7 @@ import masud from "../../../../assets/images/Customers/Rana.jpg";
 
 const Review = () => {
   return (
-    <section className="bg-white py-10 container">
+    <section className="py-20 container">
       <div className="flex flex-col items-center mb-28">
         <h1 className="p-4 uppercase text-2xl  leading-none text-center">
           our testimonial
@@ -18,7 +18,7 @@ const Review = () => {
         </h1>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 items-center justify-center gap-5">
-        <div className="flex flex-col max-w-sm dark:bg-violet-400 rounded">
+        <div className="flex flex-col dark:bg-violet-400 rounded">
           <div className="flex flex-col items-center justify-center dark:text-gray-900">
             <img
               src={fatema}
@@ -55,7 +55,7 @@ const Review = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col max-w-sm dark:bg-violet-400 rounded">
+        <div className="flex flex-col dark:bg-violet-400 rounded">
           <div className="flex flex-col items-center justify-center dark:text-gray-900">
             <img
               src={mukta}
@@ -92,7 +92,7 @@ const Review = () => {
             </p>
           </div>
         </div>
-        <div className="flex flex-col max-w-sm dark:bg-violet-400 rounded">
+        <div className="flex flex-col dark:bg-violet-400 rounded">
           <div className="flex flex-col items-center justify-center dark:text-gray-900">
             <img
               src={masud}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Writter = () => {
   return (
-    <section className="dark:bg-slate-800 dark:text-gray-50 py-14">
+    <section className="dark:bg-slate-800 dark:text-gray-50 py-32">
       <div className="container flex flex-col items-center justify-center space-y-8">
         <h1 className="text-4xl font-bold leading-none text-center text-pink-600 sm:text-5xl">
           Our Monitor Officer

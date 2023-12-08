@@ -76,7 +76,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-center items-center my-5">
+    <div className="flex justify-center items-center my-20">
       <div className="w-96 px-10 pb-5 border rounded bg-slate-100">
         <h2 className="text-2xl text-center text-pink-600 my-4 font-bold border-b pb-2">
           Please Signup

@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center my-14">
       <div className="w-96 my-10 border rounded bg-slate-50 px-10 pb-5">
         <h2 className="text-2xl text-center text-pink-600 my-4 font-bold border-b pb-2">
           Please Login
