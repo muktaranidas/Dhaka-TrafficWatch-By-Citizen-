@@ -22,16 +22,16 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/";
 
-  // if (token) {
-  //   navigate(from, { replace: true });
-  // }
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleLogin = (data) => {
     setLoginError("");
     signIn(data?.email, data?.password)
       .then((result) => {
-        const user = result.user;
-        toast("User Login Successfully!");
+        // const user = result.user;
+        toast.success("User Loggedin Successfully!");
         setLoginUserEmail(data?.email);
       })
       .catch((err) => {
@@ -43,9 +43,8 @@ const Login = () => {
   const handleGoogleLogin = () => {
     return loginWithGoogle()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast("User  Successfully Created");
+        // const user = result.user;
+        toast.success("User Loggedin  Successfully!");
       })
       .catch((err) => console.error(err));
   };

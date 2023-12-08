@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import logo from "../../../assets/images/logo.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate("/login");
+      })
       .catch((err) => console.log(err));
   };
   const menuItems = (
@@ -34,9 +37,6 @@ const Navbar = () => {
         <>
           <li>
             <Link to="/login"> Login</Link>
-          </li>
-          <li>
-            <Link to="/signup"> SignUp</Link>
           </li>
         </>
       )}
