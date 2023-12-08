@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import ComplainCard from "./ComplainCard";
-import ActionModal from "../Products/BookingModal/BookingModal";
+import ComplainCard from "../../complain/ComplainCard";
+import ActionModal from "../../Products/BookingModal/BookingModal";
 
-const Complains = () => {
+const ActionComplains = () => {
   const [complains, setComplains] = useState([]);
   const [complainId, setComplainId] = useState("");
   const [openModal, setOpenModal] = useState(null);
   const base_url = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
   useEffect(() => {
-    fetch(`${base_url}/complains`)
+    fetch(`${base_url}/complains/action`)
       .then((res) => res.json())
       .then((data) => setComplains(data.data))
       .catch((error) => console.error(error.message));
@@ -39,4 +39,4 @@ const Complains = () => {
   );
 };
 
-export default Complains;
+export default ActionComplains;

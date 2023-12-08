@@ -14,6 +14,7 @@ const Login = () => {
 
   const { signIn, loginWithGoogle } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
 
@@ -24,14 +25,16 @@ const Login = () => {
 
   if (token) {
     navigate(from, { replace: true });
+    setLoading(false);
+    
   }
 
   const handleLogin = (data) => {
+    setLoading(true);
     setLoginError("");
     signIn(data?.email, data?.password)
       .then((result) => {
         // const user = result.user;
-        toast.success("User Loggedin Successfully!");
         setLoginUserEmail(data?.email);
       })
       .catch((err) => {
@@ -97,7 +100,7 @@ const Login = () => {
           </div>
           <input
             className="btn btn-accent my-4 w-full"
-            value="Login"
+            value={loading ? "Loading...": "Login"}
             type="submit"
           />
           <div className="text-red-600 mb-6 font-bold">

@@ -1,13 +1,13 @@
-import DashboardLayout from "../../Layout/DashboardLayout";
+import { createBrowserRouter } from "react-router-dom";
 import ContactUs from "../../Pages/ContactUs/ContactUs";
 import AddProduct from "../../Pages/Dashboard/addComplain/AddComplain";
-import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
+import ActionComplains from "../../Pages/Dashboard/ComplainActions/ComplainActions";
 import Login from "../../Pages/Login/Login";
 import ErrorPage from "../../Pages/Shared/ErrorPage";
 import Signup from "../../Pages/Signup/Signup";
-const { createBrowserRouter } = require("react-router-dom");
-const { default: Main } = require("../../Layout/Main");
-const { default: Home } = require("../../Pages/Home/Home/Home");
+import Main from "../../Layout/Main";
+import Home from "../../Pages/Home/Home/Home";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,18 +35,14 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup></Signup>,
       },
-    ],
-  },
-  {
-    path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
-    errorElement: <ErrorPage></ErrorPage>,
-    children: [
       {
-        path: "/dashboard/allUsers",
-        element: <AllUsers></AllUsers>,
+        path: "/dashboard/complain-action",
+        element: (
+          <PrivateRoute>
+            <ActionComplains></ActionComplains>
+          </PrivateRoute>
+        ),
       },
-     
     ],
   },
 ]);
