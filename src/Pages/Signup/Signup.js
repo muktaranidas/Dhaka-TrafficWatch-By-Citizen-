@@ -1,11 +1,8 @@
-import { Result } from "postcss";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-// import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
-
+import toast from "react-hot-toast";
 import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
@@ -17,9 +14,7 @@ const SignUp = () => {
 
   const { createUser, updateUser, signUpWithGoogle } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
-
   const [createdUserEmail, setCreatedUserEmail] = useState("");
-
   const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
 
@@ -28,13 +23,10 @@ const SignUp = () => {
   }
 
   const handleSignUp = (data) => {
-    console.log(data);
     setSignUpError("");
-
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
         toast("User  Successfully Created");
 
         const userInfo = {
@@ -54,6 +46,7 @@ const SignUp = () => {
         setSignUpError(err.message);
       });
   };
+
   const handleGoogleSignUp = () => {
     return signUpWithGoogle()
       .then((result) => {
@@ -83,35 +76,33 @@ const SignUp = () => {
   };
 
   return (
-    <div className="h-[700px] flex justify-center items-center">
-      <div className="w-96 p-7">
-        <h2 className="text-2xl text-center text-pink-600 my-4 font-bold">
-          Please SignUp
+    <div className="flex justify-center items-center my-20">
+      <div className="w-96 px-10 pb-5 border rounded bg-slate-100">
+        <h2 className="text-2xl text-center text-pink-600 my-4 font-bold border-b pb-2">
+          Please Signup
         </h2>
-        <form
-          onSubmit={handleSubmit(handleSignUp)}
-          className="border my-2 px-10"
-        >
-          {/* user type */}
-          <select {...register("userType")} className="mt-10">
-            <option value="buyer">Admin</option>
-            <option value="seller">Monitor Officer</option>
-            <option value="admin">Customer</option>
-          </select>
-          <div className="form-control my-2 w-full max-w-xs">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              {...register("name", { required: "Name is required" })}
-              type="text"
-              className="input input-bordered w-full max-w-xs"
-            />
-            {errors.name && (
-              <p className="text-red-600"> {errors.password.message}</p>
-            )}
-          </div>
-          <div className="form-control my-2 w-full max-w-xs">
+        <form onSubmit={handleSubmit(handleSignUp)} className="">
+          <div className="form-control w-full max-w-xs">
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">User Type</span>
+              </label>
+              {/* user type */}
+              <select
+                {...register("userType")}
+                className="input input-bordered w-full max-w-xs"
+              >
+                <option value="" defaultChecked>
+                  Select
+                </option>
+                <option value="admin">admin</option>
+                <option value="monitor-officer">monitor-officer</option>
+                <option value="customer">customer</option>
+              </select>
+              {errors.name && (
+                <p className="text-red-600"> {errors.password.message}</p>
+              )}
+            </div>
             <label className="label">
               <span className="label-text">Email</span>
             </label>
@@ -135,10 +126,6 @@ const SignUp = () => {
                   value: 6,
                   message: "Password must be 6 character",
                 },
-                // pattern: {
-                //   // value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
-                //   message: "Password must be strong",
-                // },
               })}
               type="password"
               className="input input-bordered w-full max-w-xs"
@@ -157,10 +144,10 @@ const SignUp = () => {
         <p>
           Already have a account?
           <Link to="/login" className="text-secondary">
-            Please Login
+            Login
           </Link>
         </p>
-        <div className="divider">X</div>
+        <div className="divider">OR</div>
         <button onClick={handleGoogleSignUp} className="btn btn-primary w-full">
           SignUp WITH GOOGLE
         </button>

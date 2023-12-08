@@ -3,7 +3,7 @@ import React from "react";
 
 const ContactUs = () => {
   return (
-    <section className="py-6 bg-gray-900 my-12 text-white">
+    <section className="py-32 bg-gray-50 text-black min-h-[70vh]">
       <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
         <div className="py-6 mt-10 md:py-0 md:px-6">
           <h1 className="text-4xl font-bold">Get in touch</h1>
@@ -33,7 +33,7 @@ const ContactUs = () => {
               >
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
               </svg>
-              <span>01302564259</span>
+              <span>+88 01345-010203</span>
             </p>
             <p className="flex items-center">
               <svg
@@ -45,7 +45,7 @@ const ContactUs = () => {
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
               </svg>
-              <span>mukta35-2733@diu.edu.bd</span>
+              <span>example@gmail.com</span>
             </p>
           </div>
         </div>
@@ -58,22 +58,22 @@ const ContactUs = () => {
             <input
               type="text"
               placeholder="Leroy Jenkins"
-              className="block p-3 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800"
+              className="block p-3 w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-200"
             />
           </label>
           <label className="block">
-            <span className="mb-1">Email address</span>
+            <span className="mb-1">Email</span>
             <input
               type="email"
               placeholder="leroy@jenkins.com"
-              className="block w-full p-3 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800"
+              className="block w-full p-3 rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-200"
             />
           </label>
           <label className="block">
             <span className="mb-1">Message</span>
             <textarea
               rows="3"
-              className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800"
+              className="block w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-200"
             ></textarea>
           </label>
           <button>
