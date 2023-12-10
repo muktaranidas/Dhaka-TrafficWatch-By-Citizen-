@@ -14,6 +14,7 @@ const AddProduct = () => {
   const base_url = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
   const handleAddProduct = (data) => {
+    data['status'] = true
     // save complain info to the database
     fetch(`${base_url}/add-complain`, {
       method: "POST",
@@ -27,7 +28,8 @@ const AddProduct = () => {
         console.log(result);
         toast.success(`Your Compalain is Posted Successfully`);
         navigate("/");
-      });
+      })
+      .catch(error=> console.error(error))
   };
 
   return (

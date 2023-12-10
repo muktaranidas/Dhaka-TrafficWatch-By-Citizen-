@@ -17,6 +17,7 @@ const SignUp = () => {
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
+  const base_url = process.env.REACT_APP_BASE_URL || "http://localhost:5000";
 
   if (token) {
     navigate("/");
@@ -31,12 +32,12 @@ const SignUp = () => {
 
         const userInfo = {
           displayName: data.name,
-          userInfo: data.userType,
+          userInfo: data.role,
         };
 
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name, data.email, data.userType);
+            saveUser(data.name, data.email, data.role);
           })
           .catch((err) => console.error(err));
       })
@@ -57,10 +58,10 @@ const SignUp = () => {
       .catch((err) => console.error(err));
   };
 
-  const saveUser = (name, email, userType) => {
-    const user = { name, email, userType };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
     fetch(
-      "https://b612-used-products-resale-server-side-muktaranidas.vercel.app/users",
+      `${base_url}/add-user`,
       {
         method: "POST",
         headers: {
@@ -89,7 +90,7 @@ const SignUp = () => {
               </label>
               {/* user type */}
               <select
-                {...register("userType")}
+                {...register("role")}
                 className="input input-bordered w-full max-w-xs"
               >
                 <option value="" defaultChecked>
@@ -99,8 +100,8 @@ const SignUp = () => {
                 <option value="monitor-officer">monitor-officer</option>
                 <option value="customer">customer</option>
               </select>
-              {errors.name && (
-                <p className="text-red-600"> {errors.password.message}</p>
+              {errors.role && (
+                <p className="text-red-600"> {errors.role.message}</p>
               )}
             </div>
             <label className="label">

@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import logo from "../../../assets/images/logo.png";
+import useAdmin from "../../../hooks/useAdmin";
+import useMonitorOfficer from "../../../hooks/useMonitorOfficer";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
+  const [isMonitorOfficer] = useMonitorOfficer(user?.email);
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate("/login");
+      })
       .catch((err) => console.log(err));
   };
   const menuItems = (
@@ -21,11 +28,13 @@ const Navbar = () => {
       <li>
         <Link to="/contact">Contact</Link>
       </li>
+      {(isAdmin || isMonitorOfficer) && (
+        <li>
+          <Link to="/dashboard/complain-action">Dashboard</Link>
+        </li>
+      )}
       {user?.uid ? (
         <>
-          <li>
-            <Link to="/dashboard"> Dashboard</Link>
-          </li>
           <li>
             <button onClick={handleLogOut}> SignOut</button>
           </li>
@@ -34,9 +43,6 @@ const Navbar = () => {
         <>
           <li>
             <Link to="/login"> Login</Link>
-          </li>
-          <li>
-            <Link to="/signup"> SignUp</Link>
           </li>
         </>
       )}
