@@ -12,7 +12,7 @@ const Complains = () => {
       .then((res) => res.json())
       .then((data) => setComplains(data.data))
       .catch((error) => console.error(error.message));
-  }, [base_url, complains]);
+  }, [base_url]);
   return (
     <div className="container py-20 border-b">
       <h1 className="text-4xl font-semibold text-center mb-10 border-b pb-1">
